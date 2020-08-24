@@ -12,9 +12,81 @@ class Quizz extends StatelessWidget{
         body: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.0),
+            child: QuizzPage(),
           ),
         ),
       ),
+    );
+  }
+}
+
+class QuizzPage extends StatefulWidget {
+  @override
+  _QuizzPageState createState() => _QuizzPageState();
+}
+
+class _QuizzPageState extends State<QuizzPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[
+        Expanded(
+          flex: 5,
+          child: Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Center(
+              child: Text(
+                'The question text will come here.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 25.0,
+                  color: Colors.white
+                ),
+              ),
+            ),
+          ),
+        ),
+        Expanded(
+          child: Padding(
+            padding: EdgeInsets.all(14.0),
+            child: FlatButton(
+              textColor: Colors.white,
+              color: Colors.green,
+              child: Text(
+                'True',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20.0,
+                ),
+              ),
+              onPressed: (){
+                print('True button press action.');
+              },
+            ),
+          ),
+        ),
+        Expanded(
+          child: Padding(
+            padding: EdgeInsets.all(14.0),
+            child: FlatButton(
+              textColor: Colors.white,
+              color: Colors.red,
+              child: Text(
+                'False',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20.0,
+                ),
+              ),
+              onPressed: (){
+                print('False button press action.');
+              },
+            ),
+          ),
+        )
+      ],
     );
   }
 }
