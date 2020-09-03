@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'question.dart';
 
 void main() => runApp(Quizz());
 
@@ -26,11 +27,11 @@ class QuizzPage extends StatefulWidget {
 
 class _QuizzPageState extends State<QuizzPage> {
   List<Icon> scoreKeeper = [];
-  List<String> questions = [
-    'A RIVER is bigger than a STREAM.',
-    'There are one thousand years in a CENTURY.',
-    'FOUNDED is the past tense of FOUND.',
-    'ANSWER can be used as a noun and a verb.'
+  List<Question> questions = [
+    Question(q: 'A RIVER is bigger than a STREAM.', a: true),
+    Question(q: 'There are one thousand years in a CENTURY.', a: false),
+    Question(q: 'FOUNDED is the past tense of FOUND.', a: true),
+    Question(q: 'ANSWER can be used as a noun and a verb.', a: true)
   ];
   List<bool> answers = [true, false, true, true];
 
@@ -49,7 +50,7 @@ class _QuizzPageState extends State<QuizzPage> {
             child: Center(
               child: Text(
                 questions.length > questionIndex
-                    ? questions[questionIndex]
+                    ? questions[questionIndex].text
                     : 'End of Questions :(',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 25.0, color: Colors.white),
@@ -74,7 +75,7 @@ class _QuizzPageState extends State<QuizzPage> {
                 print('True button press action.');
                 if (questions.length <= questionIndex) return;
 
-                bool correctAnswer = answers[questionIndex];
+                bool correctAnswer = questions[questionIndex].answer;
                 if (correctAnswer == true) {
                   setState(() {
                     scoreKeeper.add(Icon(Icons.check, color: Colors.green));
@@ -107,7 +108,7 @@ class _QuizzPageState extends State<QuizzPage> {
                 print('False button press action.');
                 if (questions.length <= questionIndex) return;
 
-                bool correctAnswer = answers[questionIndex];
+                bool correctAnswer = questions[questionIndex].answer;
                 if (correctAnswer == false) {
                   setState(() {
                     scoreKeeper.add(Icon(Icons.check, color: Colors.green));
