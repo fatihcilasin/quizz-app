@@ -8,11 +8,20 @@ class Quizz extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.grey.shade900,
+        backgroundColor: Colors.transparent,
         body: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.0),
-            child: QuizzPage(),
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [Colors.grey.shade900, Colors.grey.shade500]
+              )
+            ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.0),
+              child: QuizzPage(),
+            ),
           ),
         ),
       ),
@@ -31,7 +40,11 @@ class _QuizzPageState extends State<QuizzPage> {
     Question(q: 'A RIVER is bigger than a STREAM.', a: true),
     Question(q: 'There are one thousand years in a CENTURY.', a: false),
     Question(q: 'FOUNDED is the past tense of FOUND.', a: true),
-    Question(q: 'ANSWER can be used as a noun and a verb.', a: true)
+    Question(q: 'ANSWER can be used as a noun and a verb.', a: true),
+    Question(q: 'SCARLET is brilliant red colour.', a: true),
+    Question(q: 'USED TO DOING and USED TO TO mean the same thing.', a: false),
+    Question(q: 'You can use IMPROVE as a noun and as a verb.', a: false),
+    Question(q: 'DOZEN is equivalent to 20.', a: false),
   ];
 
   int questionIndex = 0;
