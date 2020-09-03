@@ -33,7 +33,6 @@ class _QuizzPageState extends State<QuizzPage> {
     Question(q: 'FOUNDED is the past tense of FOUND.', a: true),
     Question(q: 'ANSWER can be used as a noun and a verb.', a: true)
   ];
-  List<bool> answers = [true, false, true, true];
 
   int questionIndex = 0;
 
