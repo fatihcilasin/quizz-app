@@ -26,6 +26,14 @@ class QuizzPage extends StatefulWidget {
 
 class _QuizzPageState extends State<QuizzPage> {
   List<Icon> scoreKeeper = [];
+  List<String> questions = [
+    'A RIVER is bigger than a STREAM.',
+    'There are one thousand years in a CENTURY.',
+    'FOUNDED is the past tense of FOUND.',
+    'ANSWER can be used as a noun and a verb.'
+  ];
+
+  int questionIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +47,7 @@ class _QuizzPageState extends State<QuizzPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                'The question text will come here.',
+                questions[questionIndex],
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 25.0, color: Colors.white),
               ),
@@ -63,6 +71,7 @@ class _QuizzPageState extends State<QuizzPage> {
                 print('True button press action.');
                 setState(() {
                   scoreKeeper.add(Icon(Icons.check, color: Colors.green));
+                  questionIndex++;
                 });
               },
             ),
@@ -85,6 +94,7 @@ class _QuizzPageState extends State<QuizzPage> {
                 print('False button press action.');
                 setState(() {
                   scoreKeeper.add(Icon(Icons.close, color: Colors.red));
+                  questionIndex++;
                 });
               },
             ),
