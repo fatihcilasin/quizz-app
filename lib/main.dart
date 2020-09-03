@@ -15,7 +15,7 @@ class Quizz extends StatelessWidget {
               gradient: LinearGradient(
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
-                colors: [Colors.grey.shade900, Colors.grey.shade500]
+                colors: [Colors.grey.shade900, Colors.grey.shade700]
               )
             ),
             child: Padding(
