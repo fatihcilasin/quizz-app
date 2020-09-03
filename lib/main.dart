@@ -72,6 +72,7 @@ class _QuizzPageState extends State<QuizzPage> {
               ),
               onPressed: () {
                 print('True button press action.');
+                if (questions.length <= questionIndex) return;
 
                 bool correctAnswer = answers[questionIndex];
                 if (correctAnswer == true) {
@@ -104,6 +105,7 @@ class _QuizzPageState extends State<QuizzPage> {
               ),
               onPressed: () {
                 print('False button press action.');
+                if (questions.length <= questionIndex) return;
 
                 bool correctAnswer = answers[questionIndex];
                 if (correctAnswer == false) {
