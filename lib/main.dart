@@ -32,6 +32,7 @@ class _QuizzPageState extends State<QuizzPage> {
     'FOUNDED is the past tense of FOUND.',
     'ANSWER can be used as a noun and a verb.'
   ];
+  List<bool> answers = [true, false, true, true];
 
   int questionIndex = 0;
 
@@ -71,10 +72,19 @@ class _QuizzPageState extends State<QuizzPage> {
               ),
               onPressed: () {
                 print('True button press action.');
-                setState(() {
-                  scoreKeeper.add(Icon(Icons.check, color: Colors.green));
-                  questionIndex++;
-                });
+
+                bool correctAnswer = answers[questionIndex];
+                if (correctAnswer == true) {
+                  setState(() {
+                    scoreKeeper.add(Icon(Icons.check, color: Colors.green));
+                    questionIndex++;
+                  });
+                } else {
+                  setState(() {
+                    scoreKeeper.add(Icon(Icons.close, color: Colors.red));
+                    questionIndex++;
+                  });
+                }
               },
             ),
           ),
@@ -94,10 +104,19 @@ class _QuizzPageState extends State<QuizzPage> {
               ),
               onPressed: () {
                 print('False button press action.');
-                setState(() {
-                  scoreKeeper.add(Icon(Icons.close, color: Colors.red));
-                  questionIndex++;
-                });
+
+                bool correctAnswer = answers[questionIndex];
+                if (correctAnswer == false) {
+                  setState(() {
+                    scoreKeeper.add(Icon(Icons.check, color: Colors.green));
+                    questionIndex++;
+                  });
+                } else {
+                  setState(() {
+                    scoreKeeper.add(Icon(Icons.close, color: Colors.red));
+                    questionIndex++;
+                  });
+                }
               },
             ),
           ),
