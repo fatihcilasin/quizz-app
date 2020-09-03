@@ -62,6 +62,29 @@ class _QuizzPageState extends State<QuizzPage> {
             padding: EdgeInsets.all(14.0),
             child: FlatButton(
               textColor: Colors.white,
+              color: Colors.blue,
+              child: Text(
+                'Reset Questions',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20.0
+                )
+              ),
+              onPressed: () {
+                print('Reset Questions button press action.');
+                setState(() {
+                  questionIndex = 0;
+                  scoreKeeper.clear();
+                });
+              },
+            ),
+          ),
+        ),
+        Expanded(
+          child: Padding(
+            padding: EdgeInsets.all(14.0),
+            child: FlatButton(
+              textColor: Colors.white,
               color: Colors.green,
               child: Text(
                 'True',
