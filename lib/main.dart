@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(Quizz());
 
-class Quizz extends StatelessWidget{
+class Quizz extends StatelessWidget {
   @override
-
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.grey.shade900,
@@ -26,6 +25,8 @@ class QuizzPage extends StatefulWidget {
 }
 
 class _QuizzPageState extends State<QuizzPage> {
+  List<Icon> scoreKeeper = [];
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -40,10 +41,7 @@ class _QuizzPageState extends State<QuizzPage> {
               child: Text(
                 'The question text will come here.',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 25.0,
-                  color: Colors.white
-                ),
+                style: TextStyle(fontSize: 25.0, color: Colors.white),
               ),
             ),
           ),
@@ -61,8 +59,11 @@ class _QuizzPageState extends State<QuizzPage> {
                   fontSize: 20.0,
                 ),
               ),
-              onPressed: (){
+              onPressed: () {
                 print('True button press action.');
+                setState(() {
+                  scoreKeeper.add(Icon(Icons.check, color: Colors.green));
+                });
               },
             ),
           ),
@@ -80,11 +81,17 @@ class _QuizzPageState extends State<QuizzPage> {
                   fontSize: 20.0,
                 ),
               ),
-              onPressed: (){
+              onPressed: () {
                 print('False button press action.');
+                setState(() {
+                  scoreKeeper.add(Icon(Icons.close, color: Colors.red));
+                });
               },
             ),
           ),
+        ),
+        Row(
+          children: scoreKeeper,
         )
       ],
     );
