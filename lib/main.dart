@@ -53,8 +53,37 @@ class _QuizzPageState extends State<QuizzPage> {
   void _reset(){
     setState(() {
       questionIndex = 0;
+      correctAnswerCount = 0;
       scoreKeeper.clear();
     });
+  }
+
+  Future<void> _showResultDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Quiz Result'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text('Correct answer count: $correctAnswerCount'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Okey'),
+              onPressed: () {
+                _reset();
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -114,6 +143,9 @@ class _QuizzPageState extends State<QuizzPage> {
               onPressed: () {
                 print('True button press action.');
                 if (questions.length <= questionIndex) return;
+                if (questions.length - 1 <= questionIndex){
+                  _showResultDialog();
+                }
 
                 bool correctAnswer = questions[questionIndex].answer;
                 if (correctAnswer == true) {
@@ -148,6 +180,9 @@ class _QuizzPageState extends State<QuizzPage> {
               onPressed: () {
                 print('False button press action.');
                 if (questions.length <= questionIndex) return;
+                if (questions.length - 1 <= questionIndex){
+                  _showResultDialog();
+                }
 
                 bool correctAnswer = questions[questionIndex].answer;
                 if (correctAnswer == false) {
