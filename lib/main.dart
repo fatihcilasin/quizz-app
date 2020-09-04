@@ -49,6 +49,13 @@ class _QuizzPageState extends State<QuizzPage> {
 
   int questionIndex = 0;
 
+  void _reset(){
+    setState(() {
+      questionIndex = 0;
+      scoreKeeper.clear();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -85,10 +92,7 @@ class _QuizzPageState extends State<QuizzPage> {
               ),
               onPressed: () {
                 print('Reset Questions button press action.');
-                setState(() {
-                  questionIndex = 0;
-                  scoreKeeper.clear();
-                });
+                _reset();
               },
             ),
           ),
