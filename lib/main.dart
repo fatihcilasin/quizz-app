@@ -48,6 +48,7 @@ class _QuizzPageState extends State<QuizzPage> {
   ];
 
   int questionIndex = 0;
+  int correctAnswerCount = 0;
 
   void _reset(){
     setState(() {
@@ -119,6 +120,7 @@ class _QuizzPageState extends State<QuizzPage> {
                   setState(() {
                     scoreKeeper.add(Icon(Icons.check, color: Colors.green));
                     questionIndex++;
+                    correctAnswerCount++;
                   });
                 } else {
                   setState(() {
@@ -152,6 +154,7 @@ class _QuizzPageState extends State<QuizzPage> {
                   setState(() {
                     scoreKeeper.add(Icon(Icons.check, color: Colors.green));
                     questionIndex++;
+                    correctAnswerCount++;
                   });
                 } else {
                   setState(() {
